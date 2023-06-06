@@ -61,16 +61,20 @@ const Pizza = ({ pizza }) => {
 }
 
 const Main = () => {
+  
+  
   const [pizzas, setPizzas] = useState([]);
    useEffect(() => {
+    function fetchData() {
+      fetch("http://localhost:5059/pizza")
+        .then(response => response.json())
+        .then(data => setPizzas(data)) 
+        console.log(data);
+    };
      fetchData();
    }, [])
 
-   function fetchData() {
-     fetch("http://localhost:5000/pizzas")
-       .then(response => response.json())
-       .then(data => setPizzas(data)) 
-   }
+  
 
    const data = pizzas.map(pizza => <Pizza pizza={pizza} />)
 
