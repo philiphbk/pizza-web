@@ -67,7 +67,7 @@ const Main = () => {
    }, [])
 
    function fetchData() {
-     fetch("/pizzas")
+     fetch("http://localhost:5000/pizzas")
        .then(response => response.json())
        .then(data => setPizzas(data)) 
    }
